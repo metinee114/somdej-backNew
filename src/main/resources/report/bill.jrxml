@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Test" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="33771575-81b7-4ab1-b0a8-9655e8a6da2d">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="roomId" class="java.lang.String"/>
+	<parameter name="roomTypename" class="java.lang.String"/>
+	<parameter name="userName" class="java.lang.String"/>
+	<parameter name="userLasname" class="java.lang.String"/>
+	<parameter name="inStart" class="java.lang.String"/>
+	<parameter name="inEnd" class="java.lang.String"/>
+	<parameter name="inId" class="java.lang.String"/>
+	<parameter name="roomLight" class="java.lang.String"/>
+	<parameter name="deLinew" class="java.lang.String"/>
+	<parameter name="totalunitLi" class="java.lang.String"/>
+	<parameter name="rentLi" class="java.lang.String"/>
+	<parameter name="roomPrice" class="java.lang.String"/>
+	<parameter name="totalLi" class="java.lang.String"/>
+	<parameter name="totalWa" class="java.lang.String"/>
+	<parameter name="deTotal" class="java.lang.String"/>
+	<parameter name="imageQRCode" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="83" splitType="Stretch">
+			<staticText>
+				<reportElement x="14" y="40" width="282" height="43" uuid="f6cf0429-6dbe-4c95-8a60-fad49fe07da3"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ซ.ศรีสวัสดิ์รัตนโกสินทร์ 4 ต.ตลาด อ.เมือง จ.มหาสารคาม 44000
+เบอร์ติดต่อ 098-1401327]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="10" width="176" height="20" uuid="9f208607-5589-4611-9b55-6325c7b254eb"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[อพาร์ตเมนต์คุณอนันต์มหาสารคาม]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement x="212" y="33" width="131" height="30" uuid="677329f4-0ee5-4876-8c42-45727b9ecf06"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ใบเเจ้งยอดชำระค่าเช่า]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="88" width="100" height="30" uuid="5b69ab43-3d25-486b-a8f8-de794a597370"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<text><![CDATA[หมายเลขใบเเจ้งหนี้ :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="88" width="75" height="25" uuid="f790d601-8feb-4fb7-9618-445ce401c2f8"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{inId}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="412" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-10" y="3" width="570" height="83" uuid="12c75edb-c2bf-4869-8c0a-046791206503"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-10" y="130" width="570" height="228" uuid="e6a69031-aeff-41e2-87f5-c5f670e836a5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-10" y="120" width="60" height="250" uuid="39176ab5-b635-4c43-8a41-7762560dde57"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="50" y="120" width="260" height="250" uuid="57bcfdb0-3bc4-4223-be68-5defc03a2bf2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="310" y="120" width="80" height="250" uuid="c9859c51-7181-4f7d-b9ca-3a78ddffd5e9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="390" y="120" width="81" height="250" uuid="260171e3-902a-46a7-adc1-7f131005e2c4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="471" y="120" width="89" height="250" uuid="d4c5511d-1ed5-4a44-8895-a1c1bb57f778"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-10" y="370" width="481" height="42" uuid="a2dfe483-be97-4454-8141-acce6d8a916c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="471" y="370" width="89" height="42" uuid="84cd06ee-e7d8-4d4b-9528-77b81a0dc7f1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-10" y="86" width="60" height="34" uuid="c1f1e37c-0885-40ba-ba05-303a0dd49d19"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="50" y="86" width="260" height="34" uuid="cab18bcd-18c7-408a-a74d-0d3cb7761ebf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="310" y="86" width="80" height="34" uuid="8120f3f4-e35a-4965-a2a2-34a7cbe386d4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="390" y="86" width="81" height="34" uuid="b93d58cb-6966-47ba-8ea1-f159cd13213e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="471" y="86" width="89" height="34" uuid="92676805-6456-42ce-afee-d630b731d334"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="10" width="239" height="30" uuid="26ab75ed-12a0-42c6-b9dc-93fca78711e2"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<text><![CDATA[เลขห้องพัก :		ประเภทห้อง :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="50" width="239" height="30" uuid="a21e1519-24be-4a46-af43-81b91d583f4f"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<text><![CDATA[ชื่อ - สกุล :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="10" width="180" height="30" uuid="39c194a7-df3f-4ebc-860e-d04b0c959f99"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<text><![CDATA[วันออกใบเเจ้งหนี้ :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="50" width="180" height="30" uuid="b83edb96-2848-4a62-b4e4-90df07e3ad67"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<text><![CDATA[วันที่กำหนดจ่าย :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="90" width="26" height="30" uuid="40f753d6-fc55-4119-bdd9-7c1926de42ba"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="90" width="50" height="30" uuid="c7da539d-3f7f-4714-9766-a218f37076e5"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<text><![CDATA[รายการ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="317" y="90" width="68" height="30" uuid="f60bbbf5-b8b2-4f2f-92d4-7743d49cc618"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<text><![CDATA[จำนวนหน่วย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="90" width="68" height="30" uuid="28e49a3c-b5ae-4cc4-9272-c7d4e51896be"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<text><![CDATA[ราคาต่อหน่วย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="90" width="61" height="30" uuid="826210f7-c8e5-4018-a81f-e71cdae6fe7e"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<text><![CDATA[จำนวนเงิน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="372" width="30" height="30" uuid="ed39541e-c038-4784-8457-0668ee8363d9"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[รวม]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="140" width="13" height="69" uuid="24be411b-c736-427b-98a3-07c4c1bd0751"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<text><![CDATA[1
+2
+3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="140" width="212" height="74" uuid="58eb5d8f-0bb5-4d14-8982-9d9c033bf216"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<text><![CDATA[ค่าห้องพัก
+ค่าไฟ (          -           )
+ค่าน้ำ ( เหมาจ่าย )]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="61" y="11" width="68" height="23" uuid="70ec194f-2c74-49b1-90ae-8ddde782873e"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{roomId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="189" y="10" width="113" height="23" uuid="dfa7d08d-5e64-443b-868d-6330bd91ea47"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{roomTypename}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="461" y="11" width="78" height="30" uuid="1d80e786-262e-4ae3-8863-d6cfc5efd965"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{inStart}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="50" width="69" height="30" uuid="b11a7f5a-c881-464c-99dc-703bd00816e2"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{inEnd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="161" width="34" height="30" uuid="24be2131-479a-4b70-b7a1-66dfb8ed773d"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{roomLight}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="161" width="38" height="28" uuid="6ece9165-94a0-49ff-b460-95c264e318df"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{deLinew}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="342" y="161" width="40" height="24" uuid="111f952c-cc4e-4ba4-a8dd-9dd350cc5e44"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalunitLi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="161" width="42" height="24" uuid="72491c04-9ca4-42b8-99b5-6c037e121892"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rentLi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="491" y="138" width="48" height="22" uuid="09a0971c-e7ad-4062-9c16-6a3c285e6227"/>
+				<textElement textAlignment="Right">
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{roomPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="491" y="160" width="48" height="24" uuid="99aaa70a-9bb5-4cdb-9941-0882d4516ff5"/>
+				<textElement textAlignment="Right">
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalLi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="491" y="184" width="48" height="24" uuid="16f6b1bc-488f-4461-aa43-6e73ca634fe9"/>
+				<textElement textAlignment="Right">
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalWa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="476" y="373" width="48" height="30" uuid="8c7ef242-1c41-4d93-b9a7-10b0661dbddc"/>
+				<textElement textAlignment="Right">
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{deTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="58" y="51" width="190" height="26" uuid="c32e5f76-c672-49cd-ba66-9662d03e79fd"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{userName}+"  "+$P{userLasname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<summary>
+		<band height="140" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-10" y="-12" width="570" height="152" uuid="f654f541-4aa3-4537-b70b-cb2badbd824a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="370" y="0" width="100" height="30" uuid="f24bf1a2-3590-4650-bb51-b9c4648230e0"/>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QR Promptpay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="64" width="180" height="60" uuid="cc468b92-838e-4eb2-acd9-82afd4342d15"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH SarabunPSK" size="16"/>
+				</textElement>
+				<text><![CDATA[ผู้รับเงิน 
+( นางสาวรัตนาวดี ศรีคำ )
+เจ้าของอพาร์ตเมนต์คุณอนันต์มหาสารคาม]]></text>
+			</staticText>
+			<image>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="371" y="30" width="94" height="97" uuid="5185c7ca-170d-460a-aec0-b8d954c4a776"/>
+				<imageExpression><![CDATA[$P{imageQRCode}]]></imageExpression>
+			</image>
+		</band>
+	</summary>
+</jasperReport>
