@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-	// view Document in URL =>  http://localhost:8090/apartmant-api/swagger-ui.html
+	// view Document in URL =>  http://localhost:9090/apartmant-api/swagger-ui.html
 
 	@Bean
 	public Docket api() {
