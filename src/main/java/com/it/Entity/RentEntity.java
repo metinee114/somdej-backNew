@@ -18,12 +18,21 @@ public class RentEntity {
 	private String rentEnd;
 	private Integer rentInsurance;
 	private String rentTotalprice;
-	private String rentOther;
+	//private String rentOther;
 	private String rentLi;
 	private String rentWa;
-	private String userId;
+	private String stetus;
+	private String cardTime;
+	private String cardAddress;
+	private Integer userId;
 	private String roomId;
-	
+	private String fileName;
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public Integer getRentId() {
 		return rentId;
 	}
@@ -54,12 +63,6 @@ public class RentEntity {
 	public void setRentTotalprice(String rentTotalprice) {
 		this.rentTotalprice = rentTotalprice;
 	}
-	public String getRentOther() {
-		return rentOther;
-	}
-	public void setRentOther(String rentOther) {
-		this.rentOther = rentOther;
-	}
 	public String getRentLi() {
 		return rentLi;
 	}
@@ -72,10 +75,28 @@ public class RentEntity {
 	public void setRentWa(String rentWa) {
 		this.rentWa = rentWa;
 	}
-	public String getUserId() {
+	public String getStetus() {
+		return stetus;
+	}
+	public void setStetus(String stetus) {
+		this.stetus = stetus;
+	}
+	public String getCardTime() {
+		return cardTime;
+	}
+	public void setCardTime(String cardTime) {
+		this.cardTime = cardTime;
+	}
+	public String getCardAddress() {
+		return cardAddress;
+	}
+	public void setCardAddress(String cardAddress) {
+		this.cardAddress = cardAddress;
+	}
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	public String getRoomId() {
@@ -84,5 +105,8 @@ public class RentEntity {
 	public void setRoomId(String roomId) {
 		this.roomId = roomId;
 	}
+
+	
+
 	
 }

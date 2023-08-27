@@ -75,7 +75,7 @@ public class UserController {
 		}
 	}
 	@GetMapping("/user/{userId}")
-	public ResponseEntity<UserEntity> getUserByuserId(@PathVariable("userId") String userId){
+	public ResponseEntity<UserEntity> getUserByuserId(@PathVariable("userId") Integer userId){
 		Optional<UserEntity> entity = userRepository.findById(userId);
 		if (entity.isPresent()) {
 			return ResponseEntity.ok(entity.get());
@@ -90,24 +90,25 @@ public class UserController {
 		if (request != null)  {
 			//String[] parts = request.getUserEmail().split("@");
 			UserEntity entity = new UserEntity();
-			entity.setUserId(request.getUserId());
+			//entity.setUserId(request.getUserId());
 			//entity.setUserUsername(parts[0]);
-			entity.setUserUsername(request.getUserName());
-			entity.setUserPassword(PasswordEncryptorUtils.passwordEncryptor(request.getPassWord()));
+			entity.setUserUsername(request.getUserUserName());
+			entity.setUserPassword(PasswordEncryptorUtils.passwordEncryptor(request.getUserPassword()));
 			//entity.setUserPassword(PasswordEncryptorUtils.passwordEncryptor(request.getUserPhone()));
 			entity.setUserTitle(request.getUserTitle());
 			entity.setUserName(request.getUserName());
 			entity.setUserLasname(request.getUserLasname());
 			entity.setUserBirthday(request.getUserBirthday());
 			entity.setUserIdcard(request.getUserIdcard());
+			entity.setUserIdcard(request.getUserIdcard());
 			entity.setUserPhone(request.getUserPhone());
-			entity.setUserGender(request.getUserGender());
+			entity.setAge(request.getAge());
 			entity.setUserAddress(request.getUserAddress());
 			entity.setUserEmail(request.getUserEmail());
 			entity.setRoleId(request.getRoleId());
 			entity.setZipCode(request.getZipCode());
 			entity.setDistrictId(request.getDistrictId());
-			entity.setRoomId(request.getRoomId());
+			//entity.setRoomId(request.getRoomId());
 //			rentController.saveRent(request)
 	return ResponseEntity.ok(userRepository.save(entity));
 
@@ -124,21 +125,21 @@ public class UserController {
 			if (entity.isPresent()) {
 				//set update data form request
 				UserEntity updateEntity = entity.get();
-				updateEntity.setUserUsername(request.getUserUsername());
-//				updateEntity.setUserPassword(request.getUserPassword());
+				//updateEntity.setUserUsername(request.getUserUsername());
+				//updateEntity.setUserPassword(request.getUserPassword());
 				updateEntity.setUserTitle(request.getUserTitle());
 				updateEntity.setUserName(request.getUserName());
 				updateEntity.setUserLasname(request.getUserLasname());
 				updateEntity.setUserBirthday(request.getUserBirthday());
 				updateEntity.setUserIdcard(request.getUserIdcard());
 				updateEntity.setUserPhone(request.getUserPhone());
-				updateEntity.setUserGender(request.getUserGender());
+				//updateEntity.setUserGender(request.getUserGender());
 				updateEntity.setUserAddress(request.getUserAddress());
 				updateEntity.setUserEmail(request.getUserEmail());
-				updateEntity.setRoleId(request.getRoleId());
+				//updateEntity.setRoleId(request.getRoleId());
 				updateEntity.setZipCode(request.getZipCode());
 				updateEntity.setDistrictId(request.getDistrictId());
-				updateEntity.setRoomId(request.getRoomId());
+				//updateEntity.setRoomId(request.getRoomId());
 				return ResponseEntity.ok(userRepository.save(updateEntity));
 			}else {
 				return ResponseEntity.badRequest().body(null);
@@ -150,7 +151,7 @@ public class UserController {
 		}
 	@DeleteMapping("/user/{userId}")
 	public ResponseEntity<String> deleteUserByUserId(@PathVariable("userId") String userId) {
-		userRepository.deleteById(String.valueOf(userId));
+		userRepository.deleteById(Integer.valueOf(userId));
 		return ResponseEntity.ok("SUCCESS");
 	}
 }//end

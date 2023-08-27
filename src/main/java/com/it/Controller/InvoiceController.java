@@ -104,7 +104,7 @@ public class InvoiceController {
 		if (rentEntity.isPresent()) {
 			RentResponse rentResponse = modelMapper.map(rentEntity.get(), RentResponse.class);
 
-			Optional<UserEntity> userEntity = userRepository.findById(String.valueOf(entity.getUserId()));
+			Optional<UserEntity> userEntity = userRepository.findById(Integer.valueOf(entity.getUserId()));
 			if (userEntity.isPresent()) {
 				response.setUser(modelMapper.map(userEntity.get(), UserResponse.class));
 
@@ -190,7 +190,7 @@ public class InvoiceController {
 	}
 
 	@GetMapping("/invoice/by-userId{userId}")
-	public ResponseEntity<List<InvoiceResponse>> invoiceByuserId(@PathVariable("userId") String userId) {
+	public ResponseEntity<List<InvoiceResponse>> invoiceByuserId(@PathVariable("userId") Integer userId) {
 //		Optional<RentEntity> entity = rentRepository.findByUserId(userId);
 //		if (null != entity && entity.size() > 0) {
 		List<InvoiceEntity> entity = invoiceRepository.findByUserId(userId);

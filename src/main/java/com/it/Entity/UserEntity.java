@@ -2,6 +2,8 @@ package com.it.Entity;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,7 +12,8 @@ import javax.persistence.Table;
 public class UserEntity {
 
 	@Id
-	private String userId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer userId;
 	private String userUsername;
 	private String userPassword;
 	private String userTitle;
@@ -18,18 +21,22 @@ public class UserEntity {
 	private String userLasname;
 	private String userBirthday;
 	private String userIdcard;
+	private String cardTime;
+	private String cardAddress;
 	private String userPhone;
-	private String userGender;
+	private String age;
 	private String userAddress;
 	private String userEmail;
 	private String RoleId; 
 	private String zipCode;
 	private Integer DistrictId;
 	private String roomId;
-	public String getUserId() {
+	
+	
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	public String getUserUsername() {
@@ -74,17 +81,29 @@ public class UserEntity {
 	public void setUserIdcard(String userIdcard) {
 		this.userIdcard = userIdcard;
 	}
+	public String getCardTime() {
+		return cardTime;
+	}
+	public void setCardTime(String cardTime) {
+		this.cardTime = cardTime;
+	}
+	public String getCardAddress() {
+		return cardAddress;
+	}
+	public void setCardAddress(String cardAddress) {
+		this.cardAddress = cardAddress;
+	}
 	public String getUserPhone() {
 		return userPhone;
 	}
 	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
 	}
-	public String getUserGender() {
-		return userGender;
+	public String getAge() {
+		return age;
 	}
-	public void setUserGender(String userGender) {
-		this.userGender = userGender;
+	public void setAge(String age) {
+		this.age = age;
 	}
 	public String getUserAddress() {
 		return userAddress;
@@ -110,17 +129,25 @@ public class UserEntity {
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
-	public String getRoomId() {
-		return roomId;
-	}
-	public void setRoomId(String roomId) {
-		this.roomId = roomId;
-	}
 	public Integer getDistrictId() {
 		return DistrictId;
 	}
 	public void setDistrictId(Integer districtId) {
 		DistrictId = districtId;
 	}
+	public String getRoomId() {
+		return roomId;
+	}
+	public void setRoomId(String roomId) {
+		this.roomId = roomId;
+	}
+
+	
+	
+	
+	
+	
+
 	
 }
+	

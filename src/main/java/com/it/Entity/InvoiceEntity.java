@@ -22,7 +22,8 @@ public class InvoiceEntity {
 	private Integer InTotal;
 	private Integer rentId;
 	private String roomId;
-	private String userId;
+	private Integer userId;
+	
 	public Integer getInId() {
 		return InId;
 	}
@@ -65,12 +66,14 @@ public class InvoiceEntity {
 	public void setRoomId(String roomId) {
 		this.roomId = roomId;
 	}
-	public String getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+
+	
 	
 
 }

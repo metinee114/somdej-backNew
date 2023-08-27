@@ -15,14 +15,17 @@ public class UserResponse implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String userId;
+	private Integer userId;
 	private String userUsername;
 	private String userPassword;
 	private String userTitle;
+	private String age;
 	private String userName;
 	private String userLasname;
 	private String userBirthday;
 	private String userIdcard;
+	private String cardTime;
+	private String cardAddress;
 	private String userPhone;
 	private String userGender;
 	private String userAddress;

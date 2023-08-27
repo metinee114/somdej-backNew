@@ -10,11 +10,21 @@ public class RoomEntity {
 
 	@Id
 	private String roomId;
+	private String roomName;
 	private String roomTypename;
 	private Integer roomPrice;
 	private String roomLight;
 	private String roomWater;
 	private String roomStatus;
+	
+	public String getRoomName() {
+		return roomName;
+	}
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+
+	
 	public String getRoomId() {
 		return roomId;
 	}
