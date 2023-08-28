@@ -56,7 +56,7 @@ public class UserController {
 		}	
 		
 		//set room	
-				Optional<RoomEntity> roomEntity = roomRepository.findById(String.valueOf(entity.getRoomId()));//ถ้าเป็น autokey ให้ใส่ Integer.valueOf
+				Optional<RoomEntity> roomEntity = roomRepository.findById(Integer.valueOf(entity.getRoomId()));//ถ้าเป็น autokey ให้ใส่ Integer.valueOf
 				if (roomEntity.isPresent()) {
 					response.setRoom(modelMapper.map(roomEntity.get(), RoomResponse.class));
 				}

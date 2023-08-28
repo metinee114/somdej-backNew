@@ -15,55 +15,49 @@ public class InvoiceEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer  InId;
-	private String InStatus;
-	private String InStart;
-	private String InEnd;
-	private Integer InTotal;
-	private Integer rentId;
-	private String roomId;
+	private Integer  Invoice_id;
+	private String Invoice_stetus;
+	private String Invoice_end;
+	private String Invoice_start;
+	private Integer Invoice_total;
+	private Integer roomId;
 	private Integer userId;
+	private Integer rentId;
 	
-	public Integer getInId() {
-		return InId;
+	public Integer getInvoice_id() {
+		return Invoice_id;
 	}
-	public void setInId(Integer inId) {
-		InId = inId;
+	public void setInvoice_id(Integer invoice_id) {
+		Invoice_id = invoice_id;
 	}
-	public String getInStatus() {
-		return InStatus;
+	public String getInvoice_stetus() {
+		return Invoice_stetus;
 	}
-	public void setInStatus(String inStatus) {
-		InStatus = inStatus;
+	public void setInvoice_stetus(String invoice_stetus) {
+		Invoice_stetus = invoice_stetus;
 	}
-	public String getInStart() {
-		return InStart;
+	public String getInvoice_end() {
+		return Invoice_end;
 	}
-	public void setInStart(String inStart) {
-		InStart = inStart;
+	public void setInvoice_end(String invoice_end) {
+		Invoice_end = invoice_end;
 	}
-	public String getInEnd() {
-		return InEnd;
+	public String getInvoice_start() {
+		return Invoice_start;
 	}
-	public void setInEnd(String inEnd) {
-		InEnd = inEnd;
+	public void setInvoice_start(String invoice_start) {
+		Invoice_start = invoice_start;
 	}
-	public Integer getInTotal() {
-		return InTotal;
+	public Integer getInvoice_total() {
+		return Invoice_total;
 	}
-	public void setInTotal(Integer inTotal) {
-		InTotal = inTotal;
+	public void setInvoice_total(Integer invoice_total) {
+		Invoice_total = invoice_total;
 	}
-	public Integer getRentId() {
-		return rentId;
-	}
-	public void setRentId(Integer rentId) {
-		this.rentId = rentId;
-	}
-	public String getRoomId() {
+	public Integer getRoomId() {
 		return roomId;
 	}
-	public void setRoomId(String roomId) {
+	public void setRoomId(Integer roomId) {
 		this.roomId = roomId;
 	}
 	public Integer getUserId() {
@@ -72,7 +66,14 @@ public class InvoiceEntity {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+	public Integer getRentId() {
+		return rentId;
+	}
+	public void setRentId(Integer rentId) {
+		this.rentId = rentId;
+	}
 
+	
 	
 	
 

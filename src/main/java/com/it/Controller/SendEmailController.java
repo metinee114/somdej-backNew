@@ -37,11 +37,11 @@ public class SendEmailController {
 		return ResponseEntity.ok("SUCCESS");
 	}
 	
-	@GetMapping("/send-email/payment")
-	public ResponseEntity<String> sendEmailPayment(@RequestParam(required = true) Integer inId) {
-		log.info("sendEmailPayment : Start :: inId : " + inId);
-		sendEmailService.sendEmailPayment(inId);
-		return ResponseEntity.ok("SUCCESS");
-	}
+//	@GetMapping("/send-email/payment")
+//	public ResponseEntity<String> sendEmailPayment(@RequestParam(required = true) Integer inId) {
+//		log.info("sendEmailPayment : Start :: inId : " + inId);
+//		sendEmailService.sendEmailPayment(inId);
+//		return ResponseEntity.ok("SUCCESS");
+//	}
 
 }

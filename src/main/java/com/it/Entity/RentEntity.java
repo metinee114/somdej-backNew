@@ -25,7 +25,8 @@ public class RentEntity {
 	private String cardTime;
 	private String cardAddress;
 	private Integer userId;
-	private String roomId;
+	private Integer roomId;
+
 	private String fileName;
 	public String getFileName() {
 		return fileName;
@@ -99,14 +100,13 @@ public class RentEntity {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public String getRoomId() {
+	
+	
+	public Integer getRoomId() {
 		return roomId;
 	}
-	public void setRoomId(String roomId) {
+	public void setRoomId(Integer roomId) {
 		this.roomId = roomId;
 	}
-
-	
-
 	
 }

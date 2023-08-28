@@ -43,7 +43,7 @@ public class InvoicedetailController {
 		InvoicedetailResponse response = modelMapper.map(entity, InvoicedetailResponse.class);
 		
 		//set invoice
-		Optional<InvoiceEntity> invoiceEntity = invoiceRepository.findById(entity.getInId());
+		Optional<InvoiceEntity> invoiceEntity = invoiceRepository.findById(entity.getInvoice_id());
 		if (invoiceEntity.isPresent()) {
 			InvoiceResponse invoiceResponse = modelMapper.map(invoiceEntity.get(), InvoiceResponse.class);
 		}
@@ -74,19 +74,16 @@ public class InvoicedetailController {
 	public ResponseEntity<InvoicedetailEntity> saveInvoicedetail(@RequestBody InvoicedetailEntity request){
 		if (request != null) {
 			InvoicedetailEntity entity = new InvoicedetailEntity();
-			entity.setDeWaold(request.getDeWaold());
-			entity.setDeLiold(request.getDeLiold());
-			entity.setDeWanew(request.getDeWanew());
-			entity.setDeLinew(request.getDeLinew());
-			entity.setTotalunitLi(request.getTotalunitLi());
-			entity.setTotalunitWa(request.getTotalunitWa());
-			entity.setTotalRoom(request.getTotalRoom());
-			entity.setTotalLi(request.getTotalLi());
-			entity.setTotalWa(request.getTotalWa());
-			entity.setDeTotal(request.getDeTotal());
-			entity.setInStart(request.getInStart());
-			entity.setInEnd(request.getInEnd());
-			entity.setInId(request.getInId());
+			entity.setDe_startdate(request.getDe_startdate());
+			entity.setDe_enddate(request.getDe_enddate());
+			entity.setDe_wa_new(request.getDe_wa_new());
+			entity.setDe_li_new(request.getDe_li_new());
+			entity.setDe_totalunit_wa(request.getDe_totalunit_wa());
+			entity.setDe_totalunit_li(request.getDe_totalunit_li());
+			entity.setDe_total_wa(request.getDe_total_wa());
+			entity.setDe_total_li(request.getDe_total_li());
+			entity.setDe_total(request.getDe_total());
+			entity.setInvoice_id(request.getInvoice_id());
 		return ResponseEntity.ok(invoicedetailRepository.save(entity));
 		}else {
 			return ResponseEntity.badRequest().body(null);
@@ -95,23 +92,20 @@ public class InvoicedetailController {
 	
 	@PostMapping("/invoicedetail/update")
 	public ResponseEntity<InvoicedetailEntity> updateInvoicedetail(@RequestBody InvoicedetailEntity request){
-		if (request.getDeId() != null) {
-			Optional<InvoicedetailEntity> entity = invoicedetailRepository.findById(request.getDeId());
+		if (request.getDe_id() != null) {
+			Optional<InvoicedetailEntity> entity = invoicedetailRepository.findById(request.getDe_id());
 			if (entity.isPresent()) {
 				InvoicedetailEntity updateEntity = entity.get();
-				updateEntity.setDeWaold(request.getDeWaold());
-				updateEntity.setDeLiold(request.getDeLiold());
-				updateEntity.setDeWanew(request.getDeWanew());
-				updateEntity.setDeLinew(request.getDeLinew());
-				updateEntity.setTotalunitLi(request.getTotalunitLi());
-				updateEntity.setTotalunitWa(request.getTotalunitWa());
-				updateEntity.setTotalRoom(request.getTotalRoom());
-				updateEntity.setTotalLi(request.getTotalLi());
-				updateEntity.setTotalWa(request.getTotalWa());
-				updateEntity.setDeTotal(request.getDeTotal());
-				updateEntity.setInStart(request.getInStart());
-				updateEntity.setInEnd(request.getInEnd());	
-				updateEntity.setInId(request.getInId());
+				updateEntity.setDe_startdate(request.getDe_startdate());
+				updateEntity.setDe_enddate(request.getDe_enddate());
+				updateEntity.setDe_wa_new(request.getDe_wa_new());
+				updateEntity.setDe_li_new(request.getDe_li_new());
+				updateEntity.setDe_totalunit_wa(request.getDe_totalunit_wa());
+				updateEntity.setDe_totalunit_li(request.getDe_totalunit_li());
+				updateEntity.setDe_total_wa(request.getDe_total_wa());
+				updateEntity.setDe_total_li(request.getDe_total_li());
+				updateEntity.setDe_total(request.getDe_total());
+				updateEntity.setInvoice_id(request.getInvoice_id());
 				return ResponseEntity.ok(invoicedetailRepository.save(updateEntity));
 			}else {
 				return ResponseEntity.badRequest().body(null);

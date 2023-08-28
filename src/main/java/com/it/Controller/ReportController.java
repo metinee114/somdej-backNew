@@ -62,39 +62,39 @@ public class ReportController {
 		return response;
 	}
 	
-	@GetMapping(path = "/generateBillPayment")
-	public ResponseEntity<InputStreamResource> generateBillPayment(@RequestParam(name = "inId", required = true) Integer inId) throws IOException{
-		log.info("generateBillPayment : Start :: rentId : " + inId);
-		ResponseEntity<InputStreamResource> response = null;
-		try (ByteArrayOutputStream out = reportService.generateBillPaymentReport(inId)){
-			if(out != null) {
-				response = new  ResponseEntity<>(new InputStreamResource(new ByteArrayInputStream(out.toByteArray())),
-						ReportUtils.createResponseHeader(MediaType.APPLICATION_PDF, "Payment.pdf", null),
-						HttpStatus.OK);
-			}
-		} catch (Exception e) {
-			log.error("generateBillPayment Error : {}" , e);
-		}
-		log.info("generateBillPayment : End");
-		return response;
-	}
+//	@GetMapping(path = "/generateBillPayment")
+//	public ResponseEntity<InputStreamResource> generateBillPayment(@RequestParam(name = "inId", required = true) Integer inId) throws IOException{
+//		log.info("generateBillPayment : Start :: rentId : " + inId);
+//		ResponseEntity<InputStreamResource> response = null;
+//		try (ByteArrayOutputStream out = reportService.generateBillPaymentReport(inId)){
+//			if(out != null) {
+//				response = new  ResponseEntity<>(new InputStreamResource(new ByteArrayInputStream(out.toByteArray())),
+//						ReportUtils.createResponseHeader(MediaType.APPLICATION_PDF, "Payment.pdf", null),
+//						HttpStatus.OK);
+//			}
+//		} catch (Exception e) {
+//			log.error("generateBillPayment Error : {}" , e);
+//		}
+//		log.info("generateBillPayment : End");
+//		return response;
+//	}
 
-	@GetMapping(path = "/generateBilldPaymentReport")
-	public ResponseEntity<InputStreamResource> generateBilldPaymentReport(@RequestParam(name = "InId", required = true) Integer InId) throws IOException{
-		log.info("generateReport : Start :: inId : " + InId);
-		ResponseEntity<InputStreamResource> response = null;
-		try (ByteArrayOutputStream out = reportService.generateBillPaymentReport(InId)){
-			if(out != null) {
-				response = new  ResponseEntity<>(new InputStreamResource(new ByteArrayInputStream(out.toByteArray())),
-						ReportUtils.createResponseHeader(MediaType.APPLICATION_PDF, "Bill.pdf", null),
-						HttpStatus.OK);
-			}
-		} catch (Exception e) {
-			log.error("generateReport Error : {}" , e);
-		}
-		log.info("generateReport : End");
-		return response;
-	}
+//	@GetMapping(path = "/generateBilldPaymentReport")
+//	public ResponseEntity<InputStreamResource> generateBilldPaymentReport(@RequestParam(name = "InId", required = true) Integer InId) throws IOException{
+//		log.info("generateReport : Start :: inId : " + InId);
+//		ResponseEntity<InputStreamResource> response = null;
+//		try (ByteArrayOutputStream out = reportService.generateBillPaymentReport(InId)){
+//			if(out != null) {
+//				response = new  ResponseEntity<>(new InputStreamResource(new ByteArrayInputStream(out.toByteArray())),
+//						ReportUtils.createResponseHeader(MediaType.APPLICATION_PDF, "Bill.pdf", null),
+//						HttpStatus.OK);
+//			}
+//		} catch (Exception e) {
+//			log.error("generateReport Error : {}" , e);
+//		}
+//		log.info("generateReport : End");
+//		return response;
+//	}
 
 
 }

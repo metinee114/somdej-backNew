@@ -30,9 +30,15 @@ public class UserEntity {
 	private String RoleId; 
 	private String zipCode;
 	private Integer DistrictId;
-	private String roomId;
+	private Integer roomId;
 	
 	
+	public Integer getRoomId() {
+		return roomId;
+	}
+	public void setRoomId(Integer roomId) {
+		this.roomId = roomId;
+	}
 	public Integer getUserId() {
 		return userId;
 	}
@@ -134,12 +140,6 @@ public class UserEntity {
 	}
 	public void setDistrictId(Integer districtId) {
 		DistrictId = districtId;
-	}
-	public String getRoomId() {
-		return roomId;
-	}
-	public void setRoomId(String roomId) {
-		this.roomId = roomId;
 	}
 
 	

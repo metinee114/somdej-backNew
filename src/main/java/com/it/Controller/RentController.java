@@ -77,7 +77,7 @@ public class RentController {
 			response.setUser(modelMapper.map(userEntity.get(), UserResponse.class));
 
 			// set room
-			Optional<RoomEntity> roomEntity = roomRepository.findById(String.valueOf(entity.getRoomId()));// ถ้าเป็น
+			Optional<RoomEntity> roomEntity = roomRepository.findById(Integer.valueOf(entity.getRoomId()));// ถ้าเป็น
 																											// autokey
 																											// ให้ใส่
 																											// Integer.valueOf
@@ -194,6 +194,36 @@ public class RentController {
 			return ResponseEntity.badRequest().body(null);
 		}
 	}
+	
+	@PostMapping("/rent/updateByRentId")
+	public ResponseEntity<RentEntity> updateByRentId(@RequestParam("rentId") Integer rentId ,@RequestParam("stetus") String stetus  ) {
+		if (rentId != null) {
+			Optional<RentEntity> entity = rentRepository.findById(rentId);
+			if (entity.isPresent()) {
+				RentEntity updateEntity = entity.get();
+				updateEntity.setStetus(stetus);
+				
+				//Optional<RentEntity> userIdentity = rentRepository.findByUserId(entity.get().getUserId());
+				Optional<UserEntity> user = userRepository.findById(entity.get().getUserId());
+				if (user.isPresent()) {
+					user.get().setRoomId(0);
+					userRepository.save(user.get());
+				}
+				
+				Optional<RoomEntity> room = roomRepository.findById(entity.get().getRoomId());
+				if (room.isPresent()) {
+					room.get().setRoomStatus("ว่าง");
+					roomRepository.save(room.get());
+				}
+				
+				return ResponseEntity.ok(rentRepository.save(updateEntity));
+			} else {
+				return ResponseEntity.badRequest().body(null);
+			}
+		} else {
+			return ResponseEntity.badRequest().body(null);
+		}
+	}
 
 	@DeleteMapping("/rent/rentId")
 	public ResponseEntity<String> deleteRentByRentId(@RequestParam("rentId") Integer rentId ) {
@@ -204,7 +234,7 @@ public class RentController {
 		Optional<RoomEntity> room = roomRepository.findById(entity.get().getRoomId());
 		Optional<UserEntity> user = userRepository.findById(entity.get().getUserId());
 		if (user.isPresent()) {
-			user.get().setRoomId("0");
+			user.get().setRoomId(0);
 			userRepository.save(user.get());
 		}
 		if (room.isPresent()) {

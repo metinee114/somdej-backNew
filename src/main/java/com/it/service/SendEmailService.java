@@ -67,34 +67,34 @@ public class SendEmailService {
 
 	}
 
-	public void sendEmailPayment(Integer inId) {
-		try {
-			ByteArrayOutputStream out = reportService.generateBillPaymentReport(inId);
-			Path tempFile = Files.createTempFile("Report", ".pdf");
-			out.toByteArray();
-			if (Files.exists(tempFile)) {
-				Files.delete(tempFile);
-
-				Files.write(tempFile, out.toByteArray());
-			} else {
-				Files.write(tempFile, out.toByteArray());
-			}
-
-			Optional<InvoiceEntity> invoiceOptional = invoiceRepository.findById(inId);
-			InvoiceEntity invoice = invoiceOptional.get();
-
-			Optional<UserEntity> opUser = userRepository.findById(invoice.getUserId());
-			UserEntity user = opUser.get();
-			String subject = "แจ้งหนี้";
-
-			StringBuilder text = new StringBuilder();
-			text.append("บิลค่าเช่าห้องพัก");
-
-			sendEmailUtils.sendMail(user.getUserEmail(), subject, text.toString(), tempFile.toFile());
-			Files.delete(tempFile);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	public void sendEmailPayment(Integer inId) {
+//		try {
+//			ByteArrayOutputStream out = reportService.generateBillPaymentReport(inId);
+//			Path tempFile = Files.createTempFile("Report", ".pdf");
+//			out.toByteArray();
+//			if (Files.exists(tempFile)) {
+//				Files.delete(tempFile);
+//
+//				Files.write(tempFile, out.toByteArray());
+//			} else {
+//				Files.write(tempFile, out.toByteArray());
+//			}
+//
+//			Optional<InvoiceEntity> invoiceOptional = invoiceRepository.findById(inId);
+//			InvoiceEntity invoice = invoiceOptional.get();
+//
+//			Optional<UserEntity> opUser = userRepository.findById(invoice.getUserId());
+//			UserEntity user = opUser.get();
+//			String subject = "แจ้งหนี้";
+//
+//			StringBuilder text = new StringBuilder();
+//			text.append("บิลค่าเช่าห้องพัก");
+//
+//			sendEmailUtils.sendMail(user.getUserEmail(), subject, text.toString(), tempFile.toFile());
+//			Files.delete(tempFile);
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 }

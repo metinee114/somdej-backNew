@@ -108,7 +108,7 @@ public class InvoiceController {
 			if (userEntity.isPresent()) {
 				response.setUser(modelMapper.map(userEntity.get(), UserResponse.class));
 
-				Optional<RoomEntity> roomEntity = roomRepository.findById(String.valueOf(entity.getRoomId()));
+				Optional<RoomEntity> roomEntity = roomRepository.findById(Integer.valueOf(entity.getRoomId()));
 				if (roomEntity.isPresent()) {
 					response.setRoom(modelMapper.map(roomEntity.get(), RoomResponse.class));
 				}
@@ -143,10 +143,10 @@ public class InvoiceController {
 	public ResponseEntity<InvoiceEntity> saveInvoice(@RequestBody InvoiceEntity request) {
 		if (request != null) {
 			InvoiceEntity entity = new InvoiceEntity();
-			entity.setInStatus(request.getInStatus());
-			entity.setInStart(request.getInStart());
-			entity.setInEnd(request.getInEnd());
-			entity.setInTotal(request.getInTotal());
+			entity.setInvoice_start(request.getInvoice_start());
+			entity.setInvoice_end(request.getInvoice_end());
+			entity.setInvoice_stetus(request.getInvoice_stetus());
+			entity.setInvoice_total(request.getInvoice_total());
 			entity.setRoomId(request.getRoomId());
 			entity.setUserId(request.getUserId());
 			entity.setRentId(request.getRentId());
@@ -167,15 +167,15 @@ public class InvoiceController {
 
 	@PostMapping("/invoice/update")
 	public ResponseEntity<InvoiceEntity> updateinvoice(@RequestBody InvoiceEntity request) {
-		if (request.getInId() != null) {
-			Optional<InvoiceEntity> entity = invoiceRepository.findById(request.getInId());
+		if (request.getInvoice_id() != null) {
+			Optional<InvoiceEntity> entity = invoiceRepository.findById(request.getInvoice_id());
 			if (entity.isPresent()) {
 				// set update data form request
 				InvoiceEntity updateEntity = entity.get();
-				updateEntity.setInStatus(request.getInStatus());
-				updateEntity.setInStart(request.getInStart());
-				updateEntity.setInEnd(request.getInEnd());
-				updateEntity.setInTotal(request.getInTotal());
+				updateEntity.setInvoice_start(request.getInvoice_start());
+				updateEntity.setInvoice_end(request.getInvoice_end());
+				updateEntity.setInvoice_stetus(request.getInvoice_stetus());
+				updateEntity.setInvoice_total(request.getInvoice_total());
 				updateEntity.setRentId(request.getRentId());
 
 				return ResponseEntity.ok(invoiceRepository.save(updateEntity));

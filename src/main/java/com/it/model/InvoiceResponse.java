@@ -16,11 +16,11 @@ public class InvoiceResponse implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Integer  InId;
-	private String InStatus;
-	private String InStart;
-	private String InEnd;
-	private Integer InTotal;
+	private Integer  Invoice_id;
+	private String Invoice_stetus;
+	private String Invoice_end;
+	private String Invoice_start;
+	private Integer Invoice_total;
 	private Integer rentId;
 	private String roomId;
 	private String userId;

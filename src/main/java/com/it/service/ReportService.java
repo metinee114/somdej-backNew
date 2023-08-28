@@ -140,62 +140,62 @@ public class ReportService {
 		return out;
 	}
 
-	public ByteArrayOutputStream generateBillPaymentReport(Integer InId) throws IOException {
-		log.info("generateBillPaymentReport : Start :: inId : " + InId);
-		ByteArrayOutputStream out = null;
-		try {
-			Optional<InvoiceEntity> invoiceOptional = invoiceRepository.findById(InId);
-			InvoiceEntity invoice = invoiceOptional.get();
-			
-			Optional<InvoicedetailEntity> invoiceDetailOptional = invoicedetailRepository.findByInId(InId);
-			InvoicedetailEntity invoiceDetail = invoiceDetailOptional.get();
-			
-			Optional<RentEntity> entity = rentRepository.findById(invoice.getRentId());
-			if (entity.isPresent()) {
-				RentResponse rent = rentController.convertToResponse(entity.get());
-
-				ClassPathResource reportFile = new ClassPathResource("report/bill.jasper");
-				JasperReport jasperReport = (JasperReport) JRLoader.loadObject(reportFile.getInputStream());
-
-				// parameter
-				Map<String, Object> parameters = new HashMap<>();
-				parameters.put("roomId", rent.getRoom().getRoomId());
-				parameters.put("roomTypename", rent.getRoom().getRoomTypename());
-				parameters.put("userName", rent.getUser().getUserName());
-				parameters.put("userLasname", rent.getUser().getUserLasname());
-				parameters.put("inStart", invoice.getInStart());
-				parameters.put("inEnd", invoice.getInEnd());
-				parameters.put("inId", invoice.getInId().toString());
-				parameters.put("roomLight", rent.getRoom().getRoomLight());
-				parameters.put("deLinew", invoiceDetail.getDeLinew().toString());
-				parameters.put("totalunitLi", invoiceDetail.getTotalunitLi().toString());
-				parameters.put("rentLi", rent.getRentLi());
-				parameters.put("roomPrice", rent.getRoom().getRoomPrice().toString());
-				parameters.put("totalLi", invoiceDetail.getTotalLi());
-				parameters.put("totalWa", invoiceDetail.getTotalWa());
-				parameters.put("deTotal", invoiceDetail.getDeTotal());
-				
-//				byte[] array = Files.readAllBytes(Paths.get("C:/Users/Beam/Desktop/QRCode.png"));
-				
-				byte[] array = qrPromptPayUtils.generateQRCodeToByteArray(new BigDecimal(invoiceDetail.getDeTotal()));
-				parameters.put("imageQRCode", new ByteArrayInputStream(array));
-				
-				JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters);
-				out = new ByteArrayOutputStream();
-
-				JasperExportManager.exportReportToPdfStream(jasperPrint, out);
-			}
-
-		} catch (Exception e) {
-			log.error("generateBillPaymentReport Error : {} ", e);
-		}
-		log.info("generateBillPaymentReport : End");
-
-//		try(OutputStream outputStream = new FileOutputStream("D:\\File-report\\test.pdf")) {
-//		    out.writeTo(outputStream);
+//	public ByteArrayOutputStream generateBillPaymentReport(Integer InId) throws IOException {
+//		log.info("generateBillPaymentReport : Start :: inId : " + InId);
+//		ByteArrayOutputStream out = null;
+//		try {
+//			Optional<InvoiceEntity> invoiceOptional = invoiceRepository.findById(InId);
+//			InvoiceEntity invoice = invoiceOptional.get();
+//			
+//			Optional<InvoicedetailEntity> invoiceDetailOptional = invoicedetailRepository.findByInId(InId);
+//			InvoicedetailEntity invoiceDetail = invoiceDetailOptional.get();
+//			
+//			Optional<RentEntity> entity = rentRepository.findById(invoice.getRentId());
+//			if (entity.isPresent()) {
+//				RentResponse rent = rentController.convertToResponse(entity.get());
+//
+//				ClassPathResource reportFile = new ClassPathResource("report/bill.jasper");
+//				JasperReport jasperReport = (JasperReport) JRLoader.loadObject(reportFile.getInputStream());
+//
+//				// parameter
+//				Map<String, Object> parameters = new HashMap<>();
+//				parameters.put("roomId", rent.getRoom().getRoomId());
+//				parameters.put("roomTypename", rent.getRoom().getRoomTypename());
+//				parameters.put("userName", rent.getUser().getUserName());
+//				parameters.put("userLasname", rent.getUser().getUserLasname());
+////				parameters.put("inStart", invoice.getInStart());
+////				parameters.put("inEnd", invoice.getInEnd());
+////				parameters.put("inId", invoice.getInId().toString());
+//				parameters.put("roomLight", rent.getRoom().getRoomLight());
+//				parameters.put("deLinew", invoiceDetail.getDeLinew().toString());
+//				parameters.put("totalunitLi", invoiceDetail.getTotalunitLi().toString());
+//				parameters.put("rentLi", rent.getRentLi());
+//				parameters.put("roomPrice", rent.getRoom().getRoomPrice().toString());
+//				parameters.put("totalLi", invoiceDetail.getTotalLi());
+//				parameters.put("totalWa", invoiceDetail.getTotalWa());
+//				parameters.put("deTotal", invoiceDetail.getDeTotal());
+//				
+////				byte[] array = Files.readAllBytes(Paths.get("C:/Users/Beam/Desktop/QRCode.png"));
+//				
+//				byte[] array = qrPromptPayUtils.generateQRCodeToByteArray(new BigDecimal(invoiceDetail.getDeTotal()));
+//				parameters.put("imageQRCode", new ByteArrayInputStream(array));
+//				
+//				JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters);
+//				out = new ByteArrayOutputStream();
+//
+//				JasperExportManager.exportReportToPdfStream(jasperPrint, out);
+//			}
+//
+//		} catch (Exception e) {
+//			log.error("generateBillPaymentReport Error : {} ", e);
 //		}
-		return out;
-	}
+//		log.info("generateBillPaymentReport : End");
+//
+////		try(OutputStream outputStream = new FileOutputStream("D:\\File-report\\test.pdf")) {
+////		    out.writeTo(outputStream);
+////		}
+//		return out;
+//	}
 
 //	private Integer getInt(String str) {
 //		if (StringUtils.isNoneBlank(str)) {

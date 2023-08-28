@@ -143,7 +143,7 @@ public class PaymentController {
 			entity.setInId(request.getInId());
 			paymentRepository.save(entity);
 
-			sendEmailService.sendEmailPayment(request.getInId());
+			//sendEmailService.sendEmailPayment(request.getInId());
 
 			return ResponseEntity.ok(entity);
 
@@ -173,40 +173,40 @@ public class PaymentController {
 		}
 
 	}
-	
-
-
-	@PostMapping("/uploadFile")
-	public Object uploadFile(@RequestParam("multipartFile") MultipartFile multipartFile,
-			@RequestParam("inId") Integer inId) {
-		Format formatter = new SimpleDateFormat("yyyyMMddHHmmss");
-		String s = formatter.format(new Date());
-		String fileName = String.valueOf(inId) + "_" + s + "." + multipartFile.getOriginalFilename().split("\\.")[1];
-		File file = new File(FILE_RECEIPT_PATH + fileName);
-
-		try (OutputStream os = new FileOutputStream(file)) {
-			os.write(multipartFile.getBytes());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		Optional<InvoiceEntity> entity = invoiceRepository.findById(inId);
-		if (entity.isPresent()) {
-			// set update data form request
-			InvoiceEntity updateEntity = entity.get();
-			updateEntity.setInStatus("2");
-			invoiceRepository.save(updateEntity);
-
-			List<PaymentEntity> opPayment = paymentRepository.findByInId(inId);
-			if (null != opPayment) {
-				PaymentEntity payment = opPayment.get(0);
-				payment.setFileName(fileName);
-				paymentRepository.save(payment);
-			}
-		}
-
-		return "SUCCESS";
-	}
+//	
+//
+//
+//	@PostMapping("/uploadFile")
+//	public Object uploadFile(@RequestParam("multipartFile") MultipartFile multipartFile,
+//			@RequestParam("inId") Integer inId) {
+//		Format formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+//		String s = formatter.format(new Date());
+//		String fileName = String.valueOf(inId) + "_" + s + "." + multipartFile.getOriginalFilename().split("\\.")[1];
+//		File file = new File(FILE_RECEIPT_PATH + fileName);
+//
+//		try (OutputStream os = new FileOutputStream(file)) {
+//			os.write(multipartFile.getBytes());
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		Optional<InvoiceEntity> entity = invoiceRepository.findById(inId);
+//		if (entity.isPresent()) {
+//			// set update data form request
+//			InvoiceEntity updateEntity = entity.get();
+//			updateEntity.setInStatus("2");
+//			invoiceRepository.save(updateEntity);
+//
+//			List<PaymentEntity> opPayment = paymentRepository.findByInId(inId);
+//			if (null != opPayment) {
+//				PaymentEntity payment = opPayment.get(0);
+//				payment.setFileName(fileName);
+//				paymentRepository.save(payment);
+//			}
+//		}
+//
+//		return "SUCCESS";
+//	}
 
 	@GetMapping(path = "/downLoadFile")
 	public ResponseEntity<InputStreamResource> downLoadFile(@RequestParam("inId") Integer inId) throws IOException {

@@ -15,105 +15,88 @@ public class InvoicedetailEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer deId;
-	private String deWaold;
-	private String deLiold;
-	private Integer deWanew;
-	private Integer deLinew;
-	private Integer totalunitLi;
-	private Integer totalunitWa;
-	private String totalRoom;
-	private String totalLi;
-	private String totalWa;
-	private String deTotal;
-	private String InStart;
-	private String InEnd;
-	private Integer inId;
-	public Integer getDeId() {
-		return deId;
+	private Integer de_id;
+	private String de_startdate;
+	private String de_enddate;
+	private Integer de_wa_new;
+	private Integer de_li_new;
+	private Integer de_totalunit_li;
+	private Integer de_totalunit_wa;
+	private String de_total_li;
+	private String de_total_wa;
+	private String de_total;
+	private Integer Invoice_id;
+	public Integer getInvoice_id() {
+		return Invoice_id;
 	}
-	public void setDeId(Integer deId) {
-		this.deId = deId;
+	public void setInvoice_id(Integer invoice_id) {
+		Invoice_id = invoice_id;
 	}
-	public String getDeWaold() {
-		return deWaold;
+	public Integer getDe_id() {
+		return de_id;
 	}
-	public void setDeWaold(String deWaold) {
-		this.deWaold = deWaold;
+	public void setDe_id(Integer de_id) {
+		this.de_id = de_id;
 	}
-	public String getDeLiold() {
-		return deLiold;
+	public String getDe_startdate() {
+		return de_startdate;
 	}
-	public void setDeLiold(String deLiold) {
-		this.deLiold = deLiold;
+	public void setDe_startdate(String de_startdate) {
+		this.de_startdate = de_startdate;
 	}
-	public Integer getDeWanew() {
-		return deWanew;
+	public String getDe_enddate() {
+		return de_enddate;
 	}
-	public void setDeWanew(Integer deWanew) {
-		this.deWanew = deWanew;
+	public void setDe_enddate(String de_enddate) {
+		this.de_enddate = de_enddate;
 	}
-	public Integer getDeLinew() {
-		return deLinew;
+	public Integer getDe_wa_new() {
+		return de_wa_new;
 	}
-	public void setDeLinew(Integer deLinew) {
-		this.deLinew = deLinew;
+	public void setDe_wa_new(Integer de_wa_new) {
+		this.de_wa_new = de_wa_new;
 	}
-	public Integer getTotalunitLi() {
-		return totalunitLi;
+	public Integer getDe_li_new() {
+		return de_li_new;
 	}
-	public void setTotalunitLi(Integer totalunitLi) {
-		this.totalunitLi = totalunitLi;
+	public void setDe_li_new(Integer de_li_new) {
+		this.de_li_new = de_li_new;
 	}
-	public Integer getTotalunitWa() {
-		return totalunitWa;
+	public Integer getDe_totalunit_li() {
+		return de_totalunit_li;
 	}
-	public void setTotalunitWa(Integer totalunitWa) {
-		this.totalunitWa = totalunitWa;
+	public void setDe_totalunit_li(Integer de_totalunit_li) {
+		this.de_totalunit_li = de_totalunit_li;
 	}
-	public String getTotalRoom() {
-		return totalRoom;
+	public Integer getDe_totalunit_wa() {
+		return de_totalunit_wa;
 	}
-	public void setTotalRoom(String totalRoom) {
-		this.totalRoom = totalRoom;
+	public void setDe_totalunit_wa(Integer de_totalunit_wa) {
+		this.de_totalunit_wa = de_totalunit_wa;
 	}
-	public String getTotalLi() {
-		return totalLi;
+	public String getDe_total_li() {
+		return de_total_li;
 	}
-	public void setTotalLi(String totalLi) {
-		this.totalLi = totalLi;
+	public void setDe_total_li(String de_total_li) {
+		this.de_total_li = de_total_li;
 	}
-	public String getTotalWa() {
-		return totalWa;
+	public String getDe_total_wa() {
+		return de_total_wa;
 	}
-	public void setTotalWa(String totalWa) {
-		this.totalWa = totalWa;
+	public void setDe_total_wa(String de_total_wa) {
+		this.de_total_wa = de_total_wa;
 	}
-	public String getDeTotal() {
-		return deTotal;
+	public String getDe_total() {
+		return de_total;
 	}
-	public void setDeTotal(String deTotal) {
-		this.deTotal = deTotal;
-	}
-	public String getInStart() {
-		return InStart;
-	}
-	public void setInStart(String inStart) {
-		InStart = inStart;
-	}
-	public String getInEnd() {
-		return InEnd;
-	}
-	public void setInEnd(String inEnd) {
-		InEnd = inEnd;
-	}
-	public Integer getInId() {
-		return inId;
-	}
-	public void setInId(Integer inId) {
-		this.inId = inId;
+	public void setDe_total(String de_total) {
+		this.de_total = de_total;
 	}
 
+
+//	private String InStart;
+//	private String InEnd;
+//	private Integer inId;
 	
 }
 
