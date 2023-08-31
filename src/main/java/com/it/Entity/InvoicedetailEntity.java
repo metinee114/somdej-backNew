@@ -26,6 +26,8 @@ public class InvoicedetailEntity {
 	private String de_total_wa;
 	private String de_total;
 	private Integer Invoice_id;
+	private Integer de_wa;
+	private Integer de_li;
 	public Integer getInvoice_id() {
 		return Invoice_id;
 	}
@@ -92,7 +94,18 @@ public class InvoicedetailEntity {
 	public void setDe_total(String de_total) {
 		this.de_total = de_total;
 	}
-
+	public Integer getDe_wa() {
+		return de_wa;
+	}
+	public void setDe_wa(Integer de_wa) {
+		this.de_wa = de_wa;
+	}
+	public Integer getDe_li() {
+		return de_li;
+	}
+	public void setDe_li(Integer de_li) {
+		this.de_li = de_li;
+	}
 
 //	private String InStart;
 //	private String InEnd;

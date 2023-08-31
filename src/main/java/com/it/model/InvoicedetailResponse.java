@@ -18,19 +18,18 @@ public class InvoicedetailResponse  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer deId;
-	private String deWaold;
-	private String deLiold;
-	private Integer deWaNew;
-	private Integer deLiNew;
-	private Integer totalunitLi;
-	private Integer totalunitWa;
-	private String totalRoom;
-	private String totalLi;
-	private String totalWa;
-	private String deTotal;
-	private String InStart;
-	private String InEnd;
-	private Integer inId;
-	private RentResponse invoice;
+	private Integer de_id;
+	private String de_startdate;
+	private String de_enddate;
+	private Integer de_wa_new;
+	private Integer de_li_new;
+	private Integer de_wa;
+	private Integer de_li;
+	private Integer de_totalunit_li;
+	private Integer de_totalunit_wa;
+	private String de_total_li;
+	private String de_total_wa;
+	private String de_total;
+	private Integer Invoice_id;
+	private InvoiceResponse invoice;
 }

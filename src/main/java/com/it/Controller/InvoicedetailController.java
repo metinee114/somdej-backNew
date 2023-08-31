@@ -114,7 +114,18 @@ public class InvoicedetailController {
 			return ResponseEntity.badRequest().body(null);
 		}
 	}
-	
+	@GetMapping("/invoice/by-inId{inId}")
+	public ResponseEntity<List<InvoicedetailResponse>> invoiceByuserId(@PathVariable("inId") Integer inId) {
+//		Optional<RentEntity> entity = rentRepository.findByUserId(userId);
+//		if (null != entity && entity.size() > 0) {
+		//Optional<InvoicedetailEntity> findByInId(Integer inId);
+		Optional<InvoicedetailEntity> entity = invoicedetailRepository.findByInId(inId);
+		if (null != entity) {
+			return ResponseEntity.ok(entity.stream().map(this::convertToResponse).collect(Collectors.toList()));
+		} else {
+			return ResponseEntity.badRequest().body(null);
+		}
+	}
 	@DeleteMapping("/invoicedetail/{deId}")
 	public ResponseEntity<String> deleteinvoicedetailByDeId(@PathVariable("deId") Integer deId) {
 		invoicedetailRepository.deleteById(Integer.valueOf(deId));
