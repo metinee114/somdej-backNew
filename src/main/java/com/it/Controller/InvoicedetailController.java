@@ -83,6 +83,8 @@ public class InvoicedetailController {
 			entity.setDe_total_wa(request.getDe_total_wa());
 			entity.setDe_total_li(request.getDe_total_li());
 			entity.setDe_total(request.getDe_total());
+			entity.setDe_li(request.getDe_li());
+			entity.setDe_wa(request.getDe_wa());
 			entity.setInvoice_id(request.getInvoice_id());
 		return ResponseEntity.ok(invoicedetailRepository.save(entity));
 		}else {

@@ -201,9 +201,9 @@ public class InvoiceController {
 		}
 	}
 
-	@DeleteMapping("/invoice/{rentId}")
-	public ResponseEntity<String> deleteinvoiceByInId(@PathVariable("rentId") Integer rentId) {
-		invoiceRepository.deleteById(Integer.valueOf(rentId));
+	@DeleteMapping("/invoice/by-rentId")
+	public ResponseEntity<String> deleteinvoiceByInId(@RequestParam("InId") Integer InId) {
+		invoiceRepository.deleteById(Integer.valueOf(InId));
 		return ResponseEntity.ok("SUCCESS");
 	}
 

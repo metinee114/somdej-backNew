@@ -18,22 +18,17 @@ public class InvoicedetailEntity {
 	private Integer de_id;
 	private String de_startdate;
 	private String de_enddate;
-	private Integer de_wa_new;
-	private Integer de_li_new;
+	private String de_wa_new;
+	private String de_li_new;
 	private Integer de_totalunit_li;
 	private Integer de_totalunit_wa;
 	private String de_total_li;
 	private String de_total_wa;
 	private String de_total;
 	private Integer Invoice_id;
-	private Integer de_wa;
-	private Integer de_li;
-	public Integer getInvoice_id() {
-		return Invoice_id;
-	}
-	public void setInvoice_id(Integer invoice_id) {
-		Invoice_id = invoice_id;
-	}
+	private String de_wa;
+	private String de_li;
+	
 	public Integer getDe_id() {
 		return de_id;
 	}
@@ -52,16 +47,16 @@ public class InvoicedetailEntity {
 	public void setDe_enddate(String de_enddate) {
 		this.de_enddate = de_enddate;
 	}
-	public Integer getDe_wa_new() {
+	public String getDe_wa_new() {
 		return de_wa_new;
 	}
-	public void setDe_wa_new(Integer de_wa_new) {
+	public void setDe_wa_new(String de_wa_new) {
 		this.de_wa_new = de_wa_new;
 	}
-	public Integer getDe_li_new() {
+	public String getDe_li_new() {
 		return de_li_new;
 	}
-	public void setDe_li_new(Integer de_li_new) {
+	public void setDe_li_new(String de_li_new) {
 		this.de_li_new = de_li_new;
 	}
 	public Integer getDe_totalunit_li() {
@@ -94,18 +89,26 @@ public class InvoicedetailEntity {
 	public void setDe_total(String de_total) {
 		this.de_total = de_total;
 	}
-	public Integer getDe_wa() {
+	public Integer getInvoice_id() {
+		return Invoice_id;
+	}
+	public void setInvoice_id(Integer invoice_id) {
+		Invoice_id = invoice_id;
+	}
+	public String getDe_wa() {
 		return de_wa;
 	}
-	public void setDe_wa(Integer de_wa) {
+	public void setDe_wa(String de_wa) {
 		this.de_wa = de_wa;
 	}
-	public Integer getDe_li() {
+	public String getDe_li() {
 		return de_li;
 	}
-	public void setDe_li(Integer de_li) {
+	public void setDe_li(String de_li) {
 		this.de_li = de_li;
 	}
+
+	
 
 //	private String InStart;
 //	private String InEnd;

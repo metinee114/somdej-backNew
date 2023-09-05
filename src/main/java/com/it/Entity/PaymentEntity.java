@@ -17,7 +17,14 @@ public class PaymentEntity {
 	private String payDate;
 	private String payTotal;
 	private Integer InvoiceId;
+	public Integer getInvoiceId() {
+		return InvoiceId;
+	}
+	public void setInvoiceId(Integer invoiceId) {
+		InvoiceId = invoiceId;
+	}
 	private String fileName;
+	//private Integer InId;
 	public Integer getPayId() {
 		return payId;
 	}
@@ -37,12 +44,7 @@ public class PaymentEntity {
 	public void setPayTotal(String payTotal) {
 		this.payTotal = payTotal;
 	}
-//	public Integer getInId() {
-//		return InId;
-//	}
-	public void setInvoiceId(Integer inId) {
-		InvoiceId = InvoiceId;
-	}
+
 	public String getFileName() {
 		return fileName;
 	}

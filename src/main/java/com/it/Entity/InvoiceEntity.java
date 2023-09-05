@@ -23,6 +23,7 @@ public class InvoiceEntity {
 	private Integer roomId;
 	private Integer userId;
 	private Integer rentId;
+	//private Integer inId;
 	
 	public Integer getInvoice_id() {
 		return Invoice_id;
@@ -69,6 +70,7 @@ public class InvoiceEntity {
 	public Integer getRentId() {
 		return rentId;
 	}
+
 	public void setRentId(Integer rentId) {
 		this.rentId = rentId;
 	}

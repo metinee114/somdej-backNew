@@ -21,10 +21,10 @@ public class InvoicedetailResponse  implements Serializable {
 	private Integer de_id;
 	private String de_startdate;
 	private String de_enddate;
-	private Integer de_wa_new;
-	private Integer de_li_new;
-	private Integer de_wa;
-	private Integer de_li;
+	private String de_wa_new;
+	private String de_li_new;
+	private String de_wa;
+	private String de_li;
 	private Integer de_totalunit_li;
 	private Integer de_totalunit_wa;
 	private String de_total_li;
