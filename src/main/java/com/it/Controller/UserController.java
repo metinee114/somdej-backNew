@@ -102,6 +102,7 @@ public class UserController {
 			entity.setUserIdcard(request.getUserIdcard());
 			entity.setUserIdcard(request.getUserIdcard());
 			entity.setUserPhone(request.getUserPhone());
+//			entity.setRoomId(request.getRoomId());
 			entity.setAge(request.getAge());
 			entity.setUserAddress(request.getUserAddress());
 			entity.setUserEmail(request.getUserEmail());

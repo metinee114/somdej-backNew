@@ -140,7 +140,7 @@ public class PaymentController {
 			entity.setPayId(request.getPayId());
 			entity.setPayDate(request.getPayDate());
 			entity.setPayTotal(request.getPayTotal());
-			entity.setInId(request.getInId());
+			entity.setInId(request.getInId());	
 			paymentRepository.save(entity);
 
 			//sendEmailService.sendEmailPayment(request.getInId());

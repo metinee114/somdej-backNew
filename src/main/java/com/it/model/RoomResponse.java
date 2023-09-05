@@ -22,6 +22,7 @@ public class RoomResponse implements Serializable{
 	private String  roomLight;
 	private String roomWater;
 	private String roomStatus;
+	private String typeId;
 	
 	
 	

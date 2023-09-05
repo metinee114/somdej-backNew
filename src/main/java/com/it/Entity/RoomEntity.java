@@ -1,5 +1,6 @@
 package com.it.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -58,6 +59,9 @@ public class RoomEntity {
 	}
 	public String getRoomStatus() {
 		return roomStatus;
+	}
+	public String gettypeId() {
+		return roomTypename;
 	}
 	public void setRoomStatus(String roomStatus) {
 		this.roomStatus = roomStatus;

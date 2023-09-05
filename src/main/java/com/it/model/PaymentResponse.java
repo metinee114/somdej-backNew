@@ -1,7 +1,7 @@
 package com.it.model;
 
 import java.io.Serializable;
-import java.util.Date;
+//import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

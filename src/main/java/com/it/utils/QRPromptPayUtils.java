@@ -16,12 +16,12 @@ public class QRPromptPayUtils {
 		
 	public byte[] generateQRCodeToByteArray(BigDecimal amount) throws IOException, WriterException {
 		ThaiQRPromptPay qr = new ThaiQRPromptPay.Builder().staticQR().creditTransfer().mobileNumber(MOBILE_NUMBER).amount(amount).build();
-		return qr.drawToByteArray(400, 400);
+		return qr.drawToByteArray(200, 200);
 	}
 	
 	public String generateQRCodeToBase64(BigDecimal amount) throws IOException, WriterException {
 		ThaiQRPromptPay qr = new ThaiQRPromptPay.Builder().staticQR().creditTransfer().mobileNumber(MOBILE_NUMBER).amount(amount).build();
-		return qr.drawToBase64(400, 400);
+		return qr.drawToBase64(300, 300);
 	}
 
 }
