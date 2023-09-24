@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -42,12 +43,13 @@ import com.it.Repository.PaymentRepository;
 import com.it.Repository.RentRepository;
 import com.it.Repository.RoomRepository;
 import com.it.Repository.UserRepository;
+import com.it.custom.repository.PaymentCustomRepository;
 import com.it.model.InvoiceResponse;
 import com.it.model.PaymentResponse;
 import com.it.model.RentResponse;
 import com.it.model.RoomResponse;
 import com.it.model.UserResponse;
-import com.it.service.SendEmailService;
+//import com.it.service.SendEmailService;
 import com.it.utils.ReportUtils;
 
 @RestController
@@ -69,7 +71,10 @@ public class PaymentController {
 	private RoomRepository roomRepository;
 
 	@Autowired
-	private SendEmailService sendEmailService;
+	private PaymentCustomRepository paymentCustomRepository;
+	
+//	@Autowired
+//	private SendEmailService sendEmailService;
 
 	@Value("${file.receipt.path}")
 	private String FILE_RECEIPT_PATH;
@@ -83,7 +88,7 @@ public class PaymentController {
 			response = modelMapper.map(entity, PaymentResponse.class);
 
 			// set invoice
-			Optional<InvoiceEntity> invoiceEntity = invoiceRepository.findById(Integer.valueOf(entity.getInvoiceId()));
+			Optional<InvoiceEntity> invoiceEntity = invoiceRepository.findById(Integer.valueOf(entity.getInvoice_id()));
 			if (invoiceEntity.isPresent()) {
 				response.setInvoice(modelMapper.map(invoiceEntity.get(), InvoiceResponse.class));
 
@@ -137,10 +142,10 @@ public class PaymentController {
 	public ResponseEntity<PaymentEntity> savePayment(@RequestBody PaymentEntity request) {
 		if (request != null) {
 			PaymentEntity entity = new PaymentEntity();
-			entity.setPayId(request.getPayId());
-			entity.setPayDate(request.getPayDate());
+			//entity.setPayId(request.getPayId());
+			entity.setPayDate(LocalDate.now().toString());
 			entity.setPayTotal(request.getPayTotal());
-			entity.setInvoiceId(request.getInvoiceId())	;
+			entity.setInvoice_id(request.getInvoice_id());
 			paymentRepository.save(entity);
 
 			//sendEmailService.sendEmailPayment(request.getInId());
@@ -161,7 +166,7 @@ public class PaymentController {
 				// set update data form request
 				PaymentEntity updateEntity = entity.get();
 				updateEntity.setPayTotal(request.getPayTotal());
-				updateEntity.setInvoiceId(request.getInvoiceId());
+				updateEntity.setInvoice_id(request.getInvoice_id());
 				updateEntity.setPayDate(request.getPayDate());
 				return ResponseEntity.ok(paymentRepository.save(updateEntity));
 			} else {
@@ -176,37 +181,37 @@ public class PaymentController {
 //	
 //
 //
-//	@PostMapping("/uploadFile")
-//	public Object uploadFile(@RequestParam("multipartFile") MultipartFile multipartFile,
-//			@RequestParam("inId") Integer inId) {
-//		Format formatter = new SimpleDateFormat("yyyyMMddHHmmss");
-//		String s = formatter.format(new Date());
-//		String fileName = String.valueOf(inId) + "_" + s + "." + multipartFile.getOriginalFilename().split("\\.")[1];
-//		File file = new File(FILE_RECEIPT_PATH + fileName);
-//
-//		try (OutputStream os = new FileOutputStream(file)) {
-//			os.write(multipartFile.getBytes());
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//
-//		Optional<InvoiceEntity> entity = invoiceRepository.findById(inId);
-//		if (entity.isPresent()) {
-//			// set update data form request
-//			InvoiceEntity updateEntity = entity.get();
-//			updateEntity.setInStatus("2");
-//			invoiceRepository.save(updateEntity);
-//
-//			List<PaymentEntity> opPayment = paymentRepository.findByInId(inId);
-//			if (null != opPayment) {
-//				PaymentEntity payment = opPayment.get(0);
-//				payment.setFileName(fileName);
-//				paymentRepository.save(payment);
-//			}
-//		}
-//
-//		return "SUCCESS";
-//	}
+	@PostMapping("/uploadFile")
+	public Object uploadFile(@RequestParam("multipartFile") MultipartFile multipartFile,
+			@RequestParam("inId") Integer inId) {
+		Format formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+		String s = formatter.format(new Date());
+		String fileName = String.valueOf(inId) + "_" + s + "." + multipartFile.getOriginalFilename().split("\\.")[1];
+		File file = new File(FILE_RECEIPT_PATH + fileName);
+
+		try (OutputStream os = new FileOutputStream(file)) {
+			os.write(multipartFile.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		Optional<InvoiceEntity> entity = invoiceRepository.findById(inId);
+		if (entity.isPresent()) {
+			// set update data form request
+			InvoiceEntity updateEntity = entity.get();
+			updateEntity.setInvoice_stetus("รอตรวจสอบ");
+			invoiceRepository.save(updateEntity);
+
+			List<PaymentEntity> opPayment = paymentRepository.findByInId(inId);
+			if (null != opPayment) {
+				PaymentEntity payment = opPayment.get(0);
+				payment.setFileName(fileName);
+				paymentRepository.save(payment);
+			}
+		}
+
+		return "SUCCESS";
+	}
 
 	@GetMapping(path = "/downLoadFile")
 	public ResponseEntity<InputStreamResource> downLoadFile(@RequestParam("inId") Integer inId) throws IOException {
@@ -226,5 +231,18 @@ public class PaymentController {
 	public ResponseEntity<String> deletepaymentBypayId(@PathVariable("payId") Integer payId) {
 		paymentRepository.deleteById(Integer.valueOf(payId));
 		return ResponseEntity.ok("SUCCESS");
+	}
+	
+	@GetMapping("/payment/search-by-criteria")
+	public ResponseEntity<List<PaymentResponse>> getSearchPaymentByCriteria(
+			@RequestParam(name = "payDateOne", required =  false) String payDateOne,
+			@RequestParam(name = "payDateTwo", required =  false) String payDateTwo
+			){
+		List<PaymentEntity> entities = paymentCustomRepository.searchPaymentByCriteria(payDateOne, payDateTwo);
+		if (entities != null && entities.size() > 0) {
+			return ResponseEntity.ok(entities.stream().map(this::convertToResponse).collect(Collectors.toList()));
+		} else {
+			return ResponseEntity.badRequest().body(null);
+		}
 	}
 }//

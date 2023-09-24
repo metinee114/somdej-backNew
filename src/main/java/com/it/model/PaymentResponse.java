@@ -2,6 +2,10 @@ package com.it.model;
 
 import java.io.Serializable;
 //import java.util.Date;
+import java.util.Collection;
+import java.util.List;
+
+import com.it.dto.OrderdetailsDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +23,7 @@ public class PaymentResponse implements Serializable {
 	private Integer  payId;
 	private String payDate;
 	private String payTotal;
-	private Integer InId;
+	private Integer Invoice_id;
 	private InvoiceResponse invoice;
 	
 }

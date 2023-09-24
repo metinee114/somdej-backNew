@@ -108,8 +108,8 @@ public class RentController {
 		}
 	}
 
-	@GetMapping("/rent/by-userId{userId}")
-	public ResponseEntity<List<RentResponse>> getRentByuserId(@PathVariable("userId") Integer userId) {
+	@GetMapping("/rent/by-userId")
+	public ResponseEntity<List<RentResponse>> getRentByuserId(@RequestParam("userId") Integer userId) {
 //		Optional<RentEntity> entity = rentRepository.findByUserId(userId);
 //		if (null != entity && entity.size() > 0) {
 		Optional<RentEntity> entity = rentRepository.findByUserId(userId);
@@ -182,7 +182,7 @@ public class RentController {
 				Optional<UserEntity> user = userRepository.findById(request.getUserId());
 				if (user.isPresent()) {
 					user.get().setCardTime(request.getCardTime());
-					user.get().setCardAddress(request.getCardAddress());
+					user.get().setCardAddress(request.getCardAddress());		
 					user.get().setRoomId(request.getRoomId());
 					userRepository.save(user.get());
 				}

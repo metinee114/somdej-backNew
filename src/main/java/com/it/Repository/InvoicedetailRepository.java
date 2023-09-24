@@ -1,5 +1,6 @@
 package com.it.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +16,9 @@ public interface InvoicedetailRepository extends JpaRepository<InvoicedetailEnti
 	public Optional<InvoicedetailEntity> findByInId(Integer invoice_id);
 	
 	//public List<InvoicedetailEntity> findByinvoiceId(Integer invoice_id);
+	
+	@Query("select t from InvoicedetailEntity t where DATE(t.de_startdate) >= ?1 AND DATE(t.de_enddate) <=?2 ")
+    public List<InvoicedetailEntity> findBySerach(Date startDate, Date endDate);
 	
 
 }

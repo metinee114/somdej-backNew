@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.it.service.ReportService;
+import com.it.service.ReportServiceImpl;
 import com.it.utils.ReportUtils;
 
 @RestController
@@ -27,6 +28,9 @@ public class ReportController {
 	
 	@Autowired
 	private ReportService reportService;
+	
+	@Autowired
+	private ReportServiceImpl reportServiceImpl;
 	
 	@GetMapping(path = "/generateReport")
 	public ResponseEntity<InputStreamResource> generateReport() throws IOException{
@@ -97,4 +101,22 @@ public class ReportController {
 //	}
 
 
+	@GetMapping(path = "/generateBillOrderReport")
+	public ResponseEntity<InputStreamResource> generateBillOrderReport(
+			@RequestParam(name = "dateFrom")String dateFrom,
+			@RequestParam(name = "dateTo")String dateTo) throws IOException{
+		log.info("generateBillOrderReport : Start :: dateFrom : {}, dateTo : {}", dateFrom, dateTo);
+		ResponseEntity<InputStreamResource> response = null;
+		try (ByteArrayOutputStream out = reportServiceImpl.generateBillOrderReport(dateFrom, dateTo)){
+			if(out != null) {
+				response = new  ResponseEntity<>(new InputStreamResource(new ByteArrayInputStream(out.toByteArray())),
+						ReportUtils.createResponseHeader(MediaType.APPLICATION_PDF, "test.pdf", null),
+						HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			log.error("generateBillOrderReport Error : {}" , e);
+		}
+		log.info("generateBillOrderReport : End");
+		return response;
+	}
 }

@@ -172,11 +172,11 @@ public class InvoiceController {
 			if (entity.isPresent()) {
 				// set update data form request
 				InvoiceEntity updateEntity = entity.get();
-				updateEntity.setInvoice_start(request.getInvoice_start());
-				updateEntity.setInvoice_end(request.getInvoice_end());
+				//updateEntity.setInvoice_start(request.getInvoice_start());
+				//updateEntity.setInvoice_end(request.getInvoice_end());
 				updateEntity.setInvoice_stetus(request.getInvoice_stetus());
-				updateEntity.setInvoice_total(request.getInvoice_total());
-				updateEntity.setRentId(request.getRentId());
+				//updateEntity.setInvoice_total(request.getInvoice_total());
+				//updateEntity.setRentId(request.getRentId());
 
 				return ResponseEntity.ok(invoiceRepository.save(updateEntity));
 			} else {
