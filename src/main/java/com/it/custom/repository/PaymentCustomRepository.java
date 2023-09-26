@@ -1,4 +1,4 @@
-package com.it.custom.repository;
+ package com.it.custom.repository;
 
 import java.util.ArrayList;
 import java.util.List;
